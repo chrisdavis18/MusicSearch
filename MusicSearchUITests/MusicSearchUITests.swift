@@ -28,9 +28,31 @@ class MusicSearchUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testTableViewOnLoad() {
+        
+        // Test Before Search
+        let app = XCUIApplication()
+        let tableView = app.tables["tableView"]
+        XCTAssertTrue(tableView.cells.count == 0)
+    
     }
     
+    func testSearchBarSearch() {
+        
+        // Add Text Into SearchBar
+        let app = XCUIApplication()
+        let searchBar = app.searchFields.element(boundBy: 0)
+        searchBar.tap()
+        searchBar.typeText("Y")
+        
+        XCTAssertTrue(searchBar.value as! String == "Y")
+
+        
+    }
+    
+    // MARK: - TODO: (with more time & a little more experience with automation) Tests that Handle Checking Data After
+    // SearchBar text changes and API Call to get songs is trigged
+    // Test Number of Cells in TableView, Click on Cell, Push New View,
+    // Pop View, etc
+
 }
